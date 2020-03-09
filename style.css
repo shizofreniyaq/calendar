@@ -1,0 +1,577 @@
+* {
+   margin: 0;
+   padding: 0;
+}
+
+body,
+html {
+   height: 100%;
+   min-height: 100%;
+}
+
+
+body {
+   font-family: 'Roboto', sans-serif;
+   font-weight: 400;
+}
+
+h3,h4,h5 {
+   font-weight: 300 !important;
+}
+
+.calendar-wrapper {
+   height: auto;
+   max-width: 730px;
+   margin: 0 auto;
+   box-shadow: -2px 10px 13px -3px #cecece;
+}
+
+.calendar-header {
+   background-color: rgba(18, 15, 25, 0.25);
+   height: 100%;
+   padding: 1.042vw;
+   color: #fff;
+   font-family: 'Roboto', sans-serif;
+   font-weight: 300;
+   position: relative;
+}
+
+.header-title {
+   padding-left: 70px;
+   padding-right: 70px;
+   height: 100%;
+   align-items: center;
+}
+.header-title h3 {
+    font-size: 2.292vw;
+    line-height: 110%;
+    margin: 0 0 1.042vw 0;
+}
+.header-title h5 {
+    font-size: 1.354vw;
+    line-height: 110%;
+    margin: .82rem 0 .656rem 0;
+}
+
+.header-background {
+   background-image: url("image/compressed-header.jpg");
+   height: 200px;
+   background-position: center right;
+   background-size: cover;
+}
+
+.calendar-content {
+   background-color: #fff;
+   padding: 20px;
+   padding-left: 15%;
+   padding-right: 15%;
+   overflow: hidden;
+}
+
+.event-mark {
+   width: 5px;
+   height: 5px;
+   background-color: teal;
+   border-radius: 100px;
+   position: absolute;
+   left: 46%;
+   top: 70%;
+}
+
+.calendar-events {
+   font-family: 'Roboto', sans-serif;
+   font-weight: 300;
+   text-align: center;
+   overflow: hidden;
+   position: fixed;
+   top: 0%;
+   left: 0%;
+   width: 100%;
+   height: 100%;
+   display: none;
+   z-index: 1;
+}
+.calendar_events .calendar-events {
+   display: block;
+   position: relative;
+   margin-top: -30px;
+   height: auto;
+}
+.calendar-events.show {
+   display: block;
+}
+.calendar-events .inner {
+   overflow: hidden;
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+   max-width: 500px;
+   width: 100%;
+   min-height: 200px;
+   background-color: #4b6289 !important;
+   padding: 20px;
+}
+.calendar_events .calendar-events .inner  {
+   display: block;
+   position: relative;
+   top: 0;
+   left: 0;
+   transform: translate(0);
+   max-width: none;
+   min-height: 0;
+}
+.calendar_events .calendar-events .inner  .emptyForm {
+    padding: 0;
+    padding-left: 0;
+    padding-right: 0;
+    display: flex;
+    height: 100%;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.calendar_events .calendar-events .inner  .emptyForm h4 {
+   margin-bottom: 0;
+}
+.overlay {
+   content: '';
+   position: fixed;
+   z-index: -1;
+   background: #000;
+   opacity: 0.5;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+}
+
+.addForm {
+   position: absolute;
+   top: 0%;
+   width: 100%;
+   height: 100%;
+   background-color: #4b5889 !important;
+   transition: top 0.5s cubic-bezier(1, 0, 0, 1);
+   padding: 25px 5px 25px 5px;
+   margin-left: -20px
+}
+.input-field {
+   text-align: center;
+   padding-bottom: 1.302vw;
+}
+.addForm label {
+   display: block;
+   color: #fff;
+   padding-bottom: 8px;
+   text-align: center;
+}
+.addForm input {
+   color: #000;
+   padding: 5px 3px;
+}
+
+.addForm .row {
+   padding-left: 0.75rem;
+   padding-right: 0.75rem;
+   margin-bottom: 0;
+}
+
+.addForm h4 {
+   color: #fff;
+   margin-bottom: 1rem;
+}
+
+.addEventButtons {
+   text-align: center;
+}
+
+.addEventButtons a {
+   font-weight: 300;
+       box-shadow: 0 5px 15px rgb(57, 168, 228);
+    background-color: #39a8e4;
+    padding: 10px;
+    padding-left: 25px;
+    padding-right: 25px;
+    cursor: pointer;
+    border-radius: 25px;
+    color: #fff ;
+    background-image: linear-gradient(135deg, #8d8dd4, #45ced4);
+    display:  inline-block;
+    min-width: 100px;
+    margin: 0 10px;
+}
+
+.emptyForm {
+   padding: 20px;
+   padding-left: 15%;
+   padding-right: 15%;
+   display: flex;
+   height: 100%;
+   align-items: center;
+   flex-direction: column;
+   justify-content: center;
+}
+
+.emptyForm h4 {
+   color: #fff;
+   margin-bottom: 25px;
+}
+
+.sidebar-wrapper {
+   color: #fff;
+   background-color: #5a649c !important;
+   padding-top: 0;
+   padding-bottom: 20px;
+   font-family: 'Roboto', sans-serif;
+   font-weight: 300;
+   padding-left: 0;
+   padding-right: 0;
+}
+
+.sidebar-title {
+   padding: 50px 15px 50px 15px;
+}
+
+.sidebar-title h4 {
+   margin-top: 0;
+}
+
+.sidebar-events {
+   overflow-x: hidden;
+   overflow-y: auto;
+   margin-bottom: 10px;
+   height: calc(100% - 70px)
+}
+
+.empty-message {
+   font-size: 1.2rem;
+   padding: 15px 6% 15px 12%;
+}
+
+.eventCard {
+   background-color: #fff;
+   color: black;
+   padding: 12px 24px 12px 24px;
+   border-bottom: 1px solid #E5E5E5;
+   white-space: nowrap;
+   position: relative;
+   animation: slideInDown 0.5s;
+}
+
+.eventCard-header {
+   font-weight: bold;
+}
+
+.eventCard-description {
+   color: grey;
+}
+
+.eventCard-mark-wrapper {
+   position: absolute;
+   right: 0;
+   top: 0;
+   height: 100%;
+   width: 60px;
+   background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 25%, rgba(255, 255, 255, 1) 100%);
+}
+
+.eventCard-mark {
+   width: 8px;
+   height: 8px;
+   background-color: #b39ddb;
+   border-radius: 100px;
+   position: absolute;
+   left: 50%;
+   top: 45%;
+}
+
+.day-mark {
+   width: 7px;
+   height: 7px;
+   background-color: #b39ddb;
+   border-radius: 100px;
+   position: absolute;
+   left: 47%;
+   top: 67%;
+}
+
+
+
+#table-body .col:hover {
+   cursor: pointer;
+   /*border: 1px solid grey;*/
+   background-color: #E0E0E0;
+}
+
+.empty-day:hover {
+   cursor: default !important;
+   background-color: #fff !important;
+}
+
+#table-body .row .col {
+   padding: .75rem;
+}
+#table-body .row .col {
+   padding-top: 1.3rem ;
+   padding-bottom: 1.3rem ;
+}
+
+#table-body .col {
+   border: 1px solid transparent;
+}
+
+#table-body {}
+
+#table-body .row {
+   margin-bottom: 0;
+}
+
+
+
+#calendar-table {
+   text-align: center;
+}
+
+
+
+.addEvent {
+   box-shadow: 0 5px 15px rgb(57, 168, 228);
+   background-color: #39a8e4;
+   padding: 10px;
+   padding-left: 3em;
+   padding-right: 3em;
+   cursor: pointer;
+   border-radius: 25px;
+   color: #fff !important;
+   background-image: linear-gradient(135deg, #8d8dd4, #45ced4);
+}
+
+.addEvent:hover {
+   transition: box-shadow 0.5s;
+   box-shadow: 0 4px 25px rgb(57, 168, 228);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+.main-wrapper {
+   display: flex;
+   height: 100%;
+}
+.sidebar-wrapper {
+   background: purple;
+   width: 30%;
+   transition: all 300ms cubic-bezier(0.645, 0.045, 0.355, 1.000);
+}
+.content-wrapper {
+   display: flex;
+   flex-direction: column;
+   width: 100%;
+   overflow: hidden;
+}
+.calendar_container {
+   height: 70%;
+}
+.calendar_events {
+   height: 30%;
+   border-top: 2px solid #000;
+   padding-top: 30px;
+   display: flex;
+    flex-direction: column;
+}
+.next-button,
+.prev-button {
+   height: 34px;
+   width: 34px;
+   border:1px solid #fff;
+   border-radius: 100%;
+   text-align: center;
+   line-height: 32px;
+   top: 50%;
+   color: grey !important;
+   transform: translate(0, -50%);
+   position: absolute;
+   cursor: pointer;
+   color: grey !important;
+}
+.next-button {
+   margin-right: 10px;
+   right: 0%;
+}
+.next-button i,
+.prev-button i {
+   border: solid #fff;
+   border-width: 0 3px 3px 0;
+   display: inline-block;
+   padding: 3px;
+   font-size: 4em;
+}
+.next-button i {
+   transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+   margin-right: 2px;
+}
+.prev-button {
+   margin-left: 10px;
+   left: 0%;
+}
+.prev-button i {
+   transform: rotate(135deg);
+  -webkit-transform: rotate(135deg);
+   margin-left: 2px;
+}
+.close {
+  position: absolute;
+   right: 10px;
+   top: 10px;
+   width: 16px;
+   height: 16px;
+  opacity: 0.3;
+  z-index: 10;
+}
+.close:hover {
+  opacity: 1;
+}
+.close:before, .close:after {
+  position: absolute;
+  left: 7px;
+  content: ' ';
+  height: 16px;
+  width: 2px;
+  background-color: #fff;
+}
+.close:before {
+  transform: rotate(45deg);
+}
+.close:after {
+  transform: rotate(-45deg);
+}
+
+
+/* hamburger button */ 
+
+#hamburger { cursor: pointer; padding: 10px 35px 16px 0px; display: inline-block; margin-right: 15px; float: left;}
+#hamburger span, #hamburger span:before, #hamburger span:after {
+  cursor: pointer;
+  border-radius: 1px;
+  height: 5px;
+  width: 35px;
+  background: #ffffff;
+  position: absolute;
+  display: inline-block;
+  content: '';
+}
+#hamburger span:before {
+  top: -10px; 
+}
+#hamburger span:after {
+  bottom: -10px;
+}
+
+#hamburger span, #hamburger span:before, #hamburger span:after {
+-webkit-transition: all 300ms cubic-bezier(0.645, 0.045, 0.355, 1.000); 
+   -moz-transition: all 300ms cubic-bezier(0.645, 0.045, 0.355, 1.000); 
+     -o-transition: all 300ms cubic-bezier(0.645, 0.045, 0.355, 1.000); 
+        transition: all 300ms cubic-bezier(0.645, 0.045, 0.355, 1.000); /* easeInOutCubic */
+}
+#hamburger.active span {
+  background-color: transparent;
+}
+#hamburger.active span:before, #hamburger.active span:after {
+  top: 0;
+}
+#hamburger.active span:before {
+  transform: rotate(45deg);
+}
+#hamburger.active span:after {
+  transform: translateY(-10px) rotate(-45deg);
+  top: 10px;
+}
+
+.slede_left {
+   width: 70px;
+}
+.slede_left h4,
+.slede_left h5 {
+   display: none;
+}
+
+
+@media (max-width:767px) {
+   #table-body .row .col {
+      padding: 2.667vw;
+   }
+   #table-header .row .col {
+      padding: 2.667vw;
+   }
+   #table-body .row .col {
+      padding-top: 2.667vw ;
+      padding-bottom: 2.667vw ;
+   }
+   .calendar-content {
+      padding: 5.333vw;
+      font-size: 2.933vw;
+   }
+   .content-wrapper {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      overflow: hidden;
+      margin-left: 70px;
+   }
+   .sidebar-wrapper {
+      width: 70px;
+      position: fixed;
+      height: 100%;
+      left: 0;
+      z-index: 2;
+   }
+   #events_block {
+      z-index: 3
+   }
+   .sidebar-wrapper h4,
+   .sidebar-wrapper h5 {
+      display: none;
+   }
+   .slede_left {
+      width: 100%;
+   }
+   .slede_left h4,
+   .slede_left h5 {
+      display: block;
+   }
+   .header-title h3 {
+       font-size: 4.800vw;
+   }
+   .header-title h5 {
+       font-size: 4.167vw;
+   }
+   .input-field {
+      width: 50%;
+   }
+   .addForm input {
+      width: 100%;
+   }
+   .input-field {
+      padding-bottom: 4vw;
+   }
+   .calendar-events .inner {
+    padding: 10px;
+   }
+   .calendar_events .calendar-events .inner .emptyForm,
+   .sidebar-events,
+   .empty-message {
+    font-size: 12px;
+   }
+
+}
